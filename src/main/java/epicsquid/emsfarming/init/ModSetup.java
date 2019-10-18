@@ -1,4 +1,4 @@
-package epicsquid.superiorshields.init;
+package epicsquid.emsfarming.init;
 
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
