@@ -8,11 +8,13 @@ import epicsquid.emsfarming.blocks.PaintedChestBlock;
 import epicsquid.emsfarming.blocks.PaintedChestItemStackRenderer;
 import epicsquid.emsfarming.blocks.PaintedChestTileEntity;
 import epicsquid.emsfarming.init.ModTileEntities;
+import epicsquid.emsfarming.items.ModFoods;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.DyeColor;
+import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.event.RegistryEvent;
@@ -37,7 +39,16 @@ public class RegistryManager {
 
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event) {
+		IForgeRegistry<Item> registry = event.getRegistry();
 		chestBlocks.forEach(block -> event.getRegistry().register(new BlockItem(block, new Item.Properties().group(EmsFarming.ITEM_GROUP).setTEISR(() -> PaintedChestItemStackRenderer::new)).setRegistryName(block.getRegistryName())));
+
+		registry.register(new Item(new Item.Properties().group(EmsFarming.ITEM_GROUP).food(ModFoods.TOMATO)).setRegistryName(EmsFarming.MODID, "tomato"));
+		registry.register(new Item(new Item.Properties().group(EmsFarming.ITEM_GROUP).food(ModFoods.CHEESE)).setRegistryName(EmsFarming.MODID, "cheese"));
+		registry.register(new Item(new Item.Properties().group(EmsFarming.ITEM_GROUP).food(ModFoods.GRAPES)).setRegistryName(EmsFarming.MODID, "grapes"));
+		registry.register(new Item(new Item.Properties().group(EmsFarming.ITEM_GROUP).food(ModFoods.SWEET_ROLL)).setRegistryName(EmsFarming.MODID, "sweet_roll"));
+		registry.register(new Item(new Item.Properties().group(EmsFarming.ITEM_GROUP)).setRegistryName(EmsFarming.MODID, "flour"));
+		registry.register(new Item(new Item.Properties().group(EmsFarming.ITEM_GROUP)).setRegistryName(EmsFarming.MODID, "pizza"));
+		registry.register(new Item(new Item.Properties().group(EmsFarming.ITEM_GROUP)).setRegistryName(EmsFarming.MODID, "mayonnaise"));
 	}
 
 	@SubscribeEvent
