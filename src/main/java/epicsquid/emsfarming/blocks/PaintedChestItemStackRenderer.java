@@ -11,7 +11,7 @@ public class PaintedChestItemStackRenderer extends ItemStackTileEntityRenderer {
 	public void renderByItem(ItemStack itemStackIn) {
 		if (Block.getBlockFromItem(itemStackIn.getItem()) instanceof PaintedChestBlock) {
 			PaintedChestBlock block = (PaintedChestBlock) Block.getBlockFromItem(itemStackIn.getItem());
-			TileEntityRendererDispatcher.instance.renderAsItem(new PaintedChestTileEntity(PaintedChestBlock.getTypeFromColor(block.getColor()), block.getColor()));
+			TileEntityRendererDispatcher.instance.renderAsItem(new PaintedChestTileEntity(block.getColor()));
 		} else {
 			super.renderByItem(itemStackIn);
 		}
