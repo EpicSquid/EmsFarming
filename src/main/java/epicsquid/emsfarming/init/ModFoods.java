@@ -1,4 +1,4 @@
-package epicsquid.emsfarming.items;
+package epicsquid.emsfarming.init;
 
 import net.minecraft.item.Food;
 

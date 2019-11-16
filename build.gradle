@@ -45,7 +45,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                mysticallib {
+                emsfarming {
                     source sourceSets.main
                 }
             }
@@ -61,7 +61,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                mysticallib {
+                emsfarming {
                     source sourceSets.main
                 }
             }
@@ -79,7 +79,7 @@ minecraft {
             args '--mod', 'mysticallib', '--all', '--output', file('src/generated/resources/')
 
             mods {
-                mysticallib {
+                emsfarming {
                     source sourceSets.main
                 }
             }
@@ -89,8 +89,36 @@ minecraft {
 
 repositories {
     maven {
-        url = "https://maven.theillusivec4.top/"
+        url 'https://maven.mcmoddev.com'
     }
+    maven {
+        name = "Jared"
+        url = "https://maven.blamejared.com"
+    }
+    maven {
+        url "http://maven.tterrag.com"
+    }
+}
+
+dependencies {
+    // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
+    // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
+    // The userdev artifact is a special name and will get all sorts of transformations applied to it.
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    if (project(':MysticalLib') != null) {
+        compile project(':MysticalLib')
+    } else {
+        compile fg.deobf(project.dependencies.create("com.github.epicsquid:mysticallib:${mysticallib_version}") {
+            transitive = false
+        })
+    }
+
+//    deobfCompile "info.tehnut.harvest:Harvest:1.12-1.2.7-20"
+}
+
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
 }
 
 dependencies {

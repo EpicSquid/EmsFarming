@@ -1,9 +1,9 @@
-package epicsquid.emsfarming.init;
+package epicsquid.emsfarming.setup;
 
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 public class ModSetup {
 
-	public void setup(FMLCommonSetupEvent event) {
+	public void init(FMLCommonSetupEvent event) {
 	}
 }
